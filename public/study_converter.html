@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const App = () => {
+            /* 클린코드 샘플 */
+            const setTime = {
+                minutes(timeValue) {
+                    setMinutes(timeValue);                    
+                },
+                hours(timeValue) {
+                    setHours(timeValue);                    
+                }
+            }
+            const executeSetTime = (timeType, timeValue) => {
+                setTime[timeType](timeValue);
+            }
+            /* //클린코드 샘플 */
+
+            const [minutes, setMinutes] = React.useState();
+            const [hours, setHours] = React.useState();
+            const onChange = (e) => {
+                // console.log("somebody wrote!!");
+
+                // console.log(e);                
+                const data = e.target.value;
+                const maxLength = e.target.maxLength;
+                executeSetTime(e.target.id, data.substring(0, maxLength));   // 자릿수 제한 적용
+
+                
+                // 클린코드 적용
+                // if(e.target.id == "minutes") {
+                //     setMinutes(data);
+                // } else {
+                //     setHours(data);
+                // }
+
+            }
+            let context = null;
+            context = <div>
+                        <h1>Super Converter</h1>
+                        <label htmlFor="minutes">Minutes</label>
+                        <input id="minutes" onChange={onChange} value={minutes} placeholder="Minutes" type="number" maxLength="5" aaa="5" />
+                        <h4>You want to convert {minutes}</h4>
+                        <label htmlFor="hours">Hours</label>
+                        <input id="hours" value={hours} placeholder="Hours" type="number" />                        
+                    </div>
+
+            return (      
+                context                
+            );
+        }
+        
+        const root = document.getElementById("root");
+        ReactDOM.render(<App />, root);
+
+    </script>
+</html>
