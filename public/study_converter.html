@@ -63,7 +63,7 @@
                             <input id="hours" onChange={onChange} value={flipped ? amount : amount/60} placeholder="Hours" type="number" maxLength="5" disabled={!flipped} />
                         </div>
                         <button onClick={reset}>Reset</button>
-                        <button onClick={onFlip}>Flipped</button>
+                        <button onClick={onFlip}>{flipped ? 'Hours' : 'Minutes'}</button>
                     </div>
             return (      
                 context                
