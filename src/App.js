@@ -1,37 +1,46 @@
 import {useState, useEffect} from "react";
-import Button from "./Button";
-import TextAPICall from "./Text";
-import ButtonStyles from "./Button.module.css"
-import AppStyles from "./App.module.css"
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const countAdd = () => {
-    setCount((current) => current + 1)
-  }
-  const onlyOne = () => {
-    if(keyword !== "") {
-      console.log(`CALL THE API => ${keyword}`);
-    }    
-  }
-  const inputKeyword = (e) => {
-    setKeyword(e.target.value);
-  }
+  const [toDo, setToDo] = useState("");
+  const [toDos, setToDos] = useState([]);
+  const onChange = (e) => setToDo(e.target.value);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    
+    if(toDo === "") {
+      return;
+    } 
+    
+    // 새로운 변수 활용 예시
+    // const newToDos = [...toDos]
+    // newToDos.push({
+    //   title:toDo
+    // });    
+    // setToDos(newToDos);    
 
-  useEffect(onlyOne, [keyword]);  // keyword state 변화가 있을때만 실행
+    setToDos((current) => [...current, {title:toDo}]);
+    setToDo("");
+  }
+  
+  useEffect(() => console.log(toDos), [toDos]);
 
   return (
     <div>
-      <h1 className={AppStyles.title}>Welcome Back!</h1>
-      <Button text="Continue" color={ButtonStyles.btn_tomato}/>
-
-      <h1 className={AppStyles.title}>{count}</h1>
-      <Button text="Click Me!" onClick={countAdd} color={ButtonStyles.btn_blue}/>
-      <TextAPICall value={keyword} placeholder="input keyword..." onChange={inputKeyword} />
+      <h1>My To Dos ({toDos.length})</h1>
+      <div>
+        <ul>
+          {toDos.map((item, index) => <li key={index}>{item.title}</li>)}
+        </ul>
+      </div>
+      <form onSubmit={onSubmit}>
+        <input value={toDo}
+            type="text"
+            onChange={onChange}
+            placeholder="Write your to do..." />
+        <button>Add To Do</button>
+      </form>
     </div>
   );
 }
 
 export default App;
- 
