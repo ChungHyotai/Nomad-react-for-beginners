@@ -3,9 +3,10 @@ import {Link} from "react-router-dom"
 const MovieList = (props) => {
     return (
         <div>
-            <img src={props.coverImg} />
+            <img src={props.coverImg} alt=''/>
             <h2>
                 <Link to={`/movie/${props.id}`}>{props.title}, id : {props.id}</Link>
+                {/* https://yts.mx/api/v2/movie_details.json?movie_id=46035 */}
             </h2>
             <p>{props.summary}</p>
             <ul>
