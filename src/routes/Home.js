@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 import {MovieList} from "../Component/List";
-import {PrevButton} from "../Component/Button";
+import {MoveButton} from "../Component/Button";
 
 function Home() {
     const [loading, setLoading] = useState(true);
@@ -43,8 +43,8 @@ return (
     <div>
         <h1>The Movies! {loading ? "" : `(${movies.length}) -> (${page})`}</h1>
 
-        <PrevButton onClick={onPageMove} action='P' name='Prev' />
-        <PrevButton onClick={onPageMove} action='N' name='Next' />      
+        <MoveButton onClick={onPageMove} action='P' name='Prev' />
+        <MoveButton onClick={onPageMove} action='N' name='Next' />      
 
         {loading ? (
             <strong>Loading...</strong>
@@ -52,8 +52,8 @@ return (
             movies
         )}
 
-        <PrevButton onClick={onPageMove} action='P' name='Prev' />
-        <PrevButton onClick={onPageMove} action='N' name='Next' />      
+        <MoveButton onClick={onPageMove} action='P' name='Prev' />
+        <MoveButton onClick={onPageMove} action='N' name='Next' />      
     </div>
     )
 }

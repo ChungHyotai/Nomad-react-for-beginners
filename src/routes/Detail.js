@@ -1,11 +1,7 @@
 import {useState, useEffect} from "react";
-import {Link, useParams} from 'react-router-dom'
+import {useParams} from "react-router-dom"
+import {HomeBtn} from "../Component/Button"
 
-function HomeBtn() {
-    return (
-        <Link to="/"><button>Home</button></Link>
-    )
-}
 function Detail() {
     const [loading, setLoading] = useState(true);
     const [movieInfo, setMovieInfo] = useState([]);
@@ -28,7 +24,7 @@ function Detail() {
     }, [params.id]);
     
     return (
-        <div>
+        <div>            
             {loading ? (
                 <strong>Loading...</strong>
             ) : (
@@ -36,11 +32,11 @@ function Detail() {
                     <h1>- Detail</h1>
                     <h2>{movieInfo.title_long}</h2>
                     <img src={movieInfo.large_cover_image} alt="" />
-                    <h3>{movieInfo.description_full}</h3>                    
+                    <h3>{movieInfo.description_full}</h3>
                 </div>
             )}
-            <HomeBtn />
             
+            <HomeBtn />            
         </div>
         
     )
