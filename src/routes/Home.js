@@ -30,13 +30,13 @@ function Home() {
     }, [page]);
 
     const onPageMove = (e) => {
-    setLoading(true)
-    setPage((current) => {
-            if(e.target.attributes.action.value === 'P')
-                return current-=1
-            else
-                return current+=1
-        })
+        setLoading(true)
+        setPage((current) => {
+                if(e.target.attributes.action.value === 'P')
+                    return current-=1
+                else
+                    return current+=1
+            })
     }
 
 return (

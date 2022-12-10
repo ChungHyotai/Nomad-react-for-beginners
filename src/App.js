@@ -1,19 +1,17 @@
 // import {useState, useEffect} from "react";
 import {
   BrowserRouter as Router,
-  Routes,
-  Route,
+  // Routes,
+  // Route,
 } from "react-router-dom"
-import Home from "./routes/Home"
-import Detail from "./routes/Detail"
+// import Home from "./routes/Home"
+// import Detail from "./routes/Detail"
+import {MovieRoute} from "./routes/Route"
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movie/:id" element={<Detail />} />
-      </Routes>
+      <MovieRoute />
     </Router>
   )
 }
