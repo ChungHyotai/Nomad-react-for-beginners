@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        
+        const App = () => {
+            let context = null;
+            const [counter, setCounter] = React.useState(0);
+            const countUp = () => {
+                // setCounter(counter + 1);
+                // current : 현재 state 값을 넘겨줌
+                setCounter((current) => current + 1);
+            }
+
+            if (counter < 5) {
+                context = <div>
+                            <h3>Total under five clicks: {counter}</h3>
+                            <button onClick={countUp}>Click Me!</button>
+                        </div>
+            } else {
+                context = <div>
+                            <h3>Total over five clicks: {counter}</h3>
+                            <button onClick={countUp}>Click Me!</button>
+                        </div>
+            }
+            
+            return (      
+                context
+            );
+        }
+
+        ReactDOM.render(<App />, root);
+        
+        // ReactDOM.render(<Container />, root);        
+
+        // - JSX 문법 사용 샘플
+        // const Title = () => {
+        //     return (
+        //         <h3 id='title' onMouseEnter={(e) => console.log("mouse enter!!")}>Hello I'm a title</h3>
+        //     );
+        // }
+        
+        // const Button = () => {
+        //     return (
+        //         <button id='sampleBtn' onClick={(e) => console.log("im clicked!")}>Click Me!</button>
+        //     );
+        // }
+
+        // const Container = () => {
+        //     return (
+        //         <div>
+        //             <Title />
+        //             <Button />
+        //         </div>
+        //     );
+        // }
+
+        // - React.createElement 사용 샘플
+        // const h3 = React.createElement(
+        //     "h3", 
+        //     {
+        //         onMouseEnter: (e) => console.log("mouse enter!!"),
+        //     }, "Hello React!");
+        // const btn = React.createElement(
+        //     "button", 
+        //     {
+        //         id: "sampleBtn",
+        //         onClick: (e) => console.log("im clicked!"),
+        //     }, 
+        //     "Click me!");
+        // const container = React.createElement("div", null, [Title, Button]);
+        
+        // ReactDOM.render(<Container />, root);
+    </script>
+</html>

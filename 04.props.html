@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const Btn = (props) => {
+            //  console.log(`${props.title} rendering!!`);            
+            return (
+                <button
+                    style={{
+                       backgroundColor: props.bgcolor,
+                       color: "white",
+                       padding: "10px 20px",
+                       border: 0,
+                       borderRadius: 10,
+                       fontSize: props.fontSize,
+                    }}
+                    onClick={props.onchangevalue}
+                >{props.title}</button>
+            )
+        }
+
+        /*
+        Tip!)
+        - 변경되지 않은 항목의 경우 재렌더링 하지 않게 하기 위해서는 React.memo(@component) 를 사용
+        - App()안에 Btn -> MemorizedBtn 로 변경해주면 됨
+        */
+        const MemorizedBtn = React.memo(Btn);
+        
+        //proptype : props로 넘겨주는 데이터 타입형태를 사전에 정의 할 수 있음
+        Btn.propTypes = {
+            title: PropTypes.string,
+            fontSize: PropTypes.number,
+        };
+        
+
+        const App = () => {
+            const [value, setValue] = React.useState("Save Changes")
+            const changeValue = (value) => setValue(value);
+            let context = null;
+
+            context = 
+                    <div>                        
+                        <Btn title={value} 
+                            bgcolor="tomato"
+                            fontSize={20}
+                            onchangevalue={
+                                (e) => changeValue("Revertd Changes")
+                            }
+                        />
+                        <Btn fontSize={15}
+                            bgcolor="green"
+                            title="Continue"
+                            onchangevalue={
+                                (e) => changeValue("Save Changes")
+                            }
+                        />
+                    </div>
+
+            return (      
+                context                
+            );
+        }
+        
+        const root = document.getElementById("root");
+        ReactDOM.render(<App />, root);
+
+    </script>
+</html>

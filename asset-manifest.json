@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/nomad-react-for-beginners/static/js/main.b31771e6.js",
+    "index.html": "/nomad-react-for-beginners/index.html",
+    "main.b31771e6.js.map": "/nomad-react-for-beginners/static/js/main.b31771e6.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.b31771e6.js"
+  ]
+}
