@@ -8,7 +8,7 @@ const MovieList = (props) => {
                 <Link to={`/movie/${props.id}`}>{props.title}, id : {props.id}</Link>
                 {/* https://yts.mx/api/v2/movie_details.json?movie_id=46035 */}
             </h2>
-            <p>{props.summary}</p>
+            <p>{props.summary.length > 235 ? `${props.summary.slice(0, 235)}...`: props.summary}</p>
             <ul>
                 {props.genres.map((item, index)=> (
                     <li key={index}>{item}</li>
